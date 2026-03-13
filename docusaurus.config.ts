@@ -19,12 +19,12 @@ const config: Config = {
   trailingSlash: false, // based on recommendation
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/deploy-docusaurus-to-github-pages/',
+  baseUrl: '/deploy-docusaurus-to-github-pages-with-local-search/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'sanchayan-deshaw-personal', // Usually your GitHub org/user name.
-  projectName: 'deploy-docusaurus-to-github-pages', // Usually your repo name.
+  projectName: 'deploy-docusaurus-to-github-pages-with-local-search', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: "throw",
@@ -46,7 +46,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/sanchayan-deshaw-personal/deploy-docusaurus-to-github-pages/tree/main/',
+            'https://github.com/sanchayan-deshaw-personal/deploy-docusaurus-to-github-pages-with-local-search/tree/main/',
         },
         blog: {
           showReadingTime: true,
@@ -57,7 +57,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/sanchayan-deshaw-personal/deploy-docusaurus-to-github-pages/tree/main/',
+            'https://github.com/sanchayan-deshaw-personal/deploy-docusaurus-to-github-pages-with-local-search/tree/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -69,7 +69,19 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
+  // Add the local search theme so Docusaurus builds a search index
+  // and enables built-in local search for this site.
+  // This is the line that plugs @easyops-cn/docusaurus-search-local into Docusaurus.
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        // Recommended by the plugin docs so the generated search index file
+        // can use a hashed filename for safer long-term caching.
+        hashed: true,
+      },
+    ],
+  ],
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
